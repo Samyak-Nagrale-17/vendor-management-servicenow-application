@@ -90,14 +90,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-05-31 13:23:28</sys_created_on>
         <sys_id>80055b73c389c3d07b7c5c65e40131f8</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>Vendor Renewal Request</sys_name>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Vendor Management">8c5f0aadc34543907b7c5c65e401313f</sys_scope>
         <sys_update_name>sc_cat_item_producer_80055b73c389c3d07b7c5c65e40131f8</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-05-31 14:29:14</sys_updated_on>
+        <sys_updated_on>2026-05-31 14:30:54</sys_updated_on>
         <table_name>x_1956461_vendor_0_vendor_table</table_name>
         <taxonomy_topic/>
         <template/>
@@ -105,7 +105,7 @@
         <type>item</type>
         <use_sc_layout>true</use_sc_layout>
         <vendor/>
-        <version>6</version>
+        <version>7</version>
         <view/>
         <visible_bundle>true</visible_bundle>
         <visible_guide>true</visible_guide>
