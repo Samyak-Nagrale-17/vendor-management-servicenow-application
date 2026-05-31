@@ -22,12 +22,68 @@
     //Type appropriate comment here, and begin script below
     // alert(window.location.href);
 
-    var urlStr = top.location.href; 
-    // alert('URL: ',urlStr);
-    // Parse the parameters natively
+    var urlStr = top.location.href;
     var urlParams = new URLSearchParams(urlStr);
-    var myParam = urlParams.get('vendor_sys_id');
-    alert('vendor_sys_id: '+ myParam);
+    var vendorSysId = urlParams.get('vendor_sys_id');
+    alert('vendor_sys_id: ' + vendorSysId);
+
+
+    if (!vendorSysId)
+        return;
+
+
+    gs.info('before glide ajax call...............');
+
+    var ga = new GlideAjax(
+        'VendorRenewalAjax'
+    );
+
+    ga.addParam(
+        'sysparm_name',
+        'getVendorDetails'
+    );
+
+    ga.addParam(
+        'sysparm_vendor_sys_id',
+        vendorSysId
+    );
+
+
+    gs.info('before get xml answer............');
+
+    ga.getXMLAnswer(function(response) {
+
+        if (!response)
+            return;
+
+        var data = JSON.parse(response);
+
+        g_form.setValue(
+            'vendor_code',
+            data.vendor_code
+        );
+
+        g_form.setValue(
+            'vendor_name',
+            data.vendor_name
+        );
+
+        g_form.setValue(
+            'vendor_contact',
+            data.vendor_contact
+        );
+
+        g_form.setValue(
+            'vendor_manager',
+            data.vendor_manager
+        );
+
+        g_form.setValue(
+            'state',
+            data.state
+        );
+
+    });
 
 }]]></script>
         <sys_class_name>catalog_script_client</sys_class_name>
@@ -36,7 +92,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>b08c5773c3c9c3d07b7c5c65e4013128</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>get vendor request sys id from url param</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vendor Management" source="x_1956461_vendor_0">8c5f0aadc34543907b7c5c65e401313f</sys_package>
@@ -44,7 +100,7 @@
         <sys_scope display_value="Vendor Management">8c5f0aadc34543907b7c5c65e401313f</sys_scope>
         <sys_update_name>catalog_script_client_b08c5773c3c9c3d07b7c5c65e4013128</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-05-31 14:32:19</sys_updated_on>
+        <sys_updated_on>2026-05-31 14:40:08</sys_updated_on>
         <table/>
         <type>onLoad</type>
         <ui_type>10</ui_type>
