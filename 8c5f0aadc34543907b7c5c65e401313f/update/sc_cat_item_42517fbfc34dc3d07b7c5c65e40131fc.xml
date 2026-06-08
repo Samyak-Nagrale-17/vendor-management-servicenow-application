@@ -6,7 +6,7 @@
         <billable>false</billable>
         <category display_value="Can We Help You?">e15706fc0a0a0aa7007fc21e1ab70c2f</category>
         <cc_render_type/>
-        <checked_out>false</checked_out>
+        <checked_out>true</checked_out>
         <cost>0</cost>
         <custom_cart/>
         <delivery_plan/>
@@ -15,7 +15,7 @@
         <description/>
         <display_price_property>non_zero</display_price_property>
         <entitlement_script/>
-        <flow_designer_flow display_value="Vendor Renewal flow">02a4c804c31107d07b7c5c65e4013115</flow_designer_flow>
+        <flow_designer_flow display_value="Update vendor states after renewal is requested">02a4c804c31107d07b7c5c65e4013115</flow_designer_flow>
         <fulfillment_automation_level>unspecified</fulfillment_automation_level>
         <group/>
         <hide_sp>false</hide_sp>

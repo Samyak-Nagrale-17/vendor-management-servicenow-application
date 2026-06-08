@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <advanced>true</advanced>
+        <business_calendar/>
+        <can_iterate>false</can_iterate>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_run_end/>
+        <entered_run_start/>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <max_drift/>
+        <name>Vendor Request Expiry Reminder</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <repeat_every/>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_daysofweek/>
+        <run_end/>
+        <run_month>1</run_month>
+        <run_period/>
+        <run_start>2026-05-28 09:54:16</run_start>
+        <run_time>1970-01-01 09:00:00</run_time>
+        <run_type>daily</run_type>
+        <run_weekinmonth>1</run_weekinmonth>
+        <script><![CDATA[var gr = new GlideRecord('x_1956461_vendor_0_vendor_table');
+
+// Only active records with expiry date
+gr.addActiveQuery();
+gr.addQuery('state', 'active');
+gr.addNotNullQuery('expiry_date');
+
+gr.query();
+
+while (gr.next()) {
+
+    var today = new GlideDateTime();
+    var expiry = new GlideDateTime(gr.getValue('expiry_date'));
+
+    // Difference in milliseconds
+    var diff = expiry.getNumericValue() - today.getNumericValue();
+
+    // Convert milliseconds to days
+    var daysRemaining = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    gs.info(`email event triggred--------${daysRemaining}`);
+
+    // Send reminders
+    if (daysRemaining < 0) {
+
+        gr.state = 'expired';
+        gr.active = false;
+
+        gr.update();
+
+        gs.eventQueue(
+            'x_1956461_vendor_0.vendorExpiryReminder',
+            gr,
+            'today',
+            gr.getValue('contact_email')
+        );
+    } else if (daysRemaining == 90 || daysRemaining == 60 || daysRemaining == 45 || daysRemaining == 29 || daysRemaining == 14 || daysRemaining == 7) {
+
+        gs.info('email event triggred', gr);
+        gs.eventQueue(
+            'x_1956461_vendor_0.vendorExpiryReminder',
+            gr,
+            daysRemaining,
+            gr.getValue('contact_email')
+        );
+    }
+
+}]]></script>
+        <source_filter/>
+        <source_table>cmdb_ci_appl_dot_net</source_table>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-05-28 09:54:16</sys_created_on>
+        <sys_id>f9f743fec389cb907b7c5c65e40131de</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Vendor Request Expiry Reminder</sys_name>
+        <sys_package display_value="Vendor Management" source="x_1956461_vendor_0">8c5f0aadc34543907b7c5c65e401313f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Vendor Management">8c5f0aadc34543907b7c5c65e401313f</sys_scope>
+        <sys_update_name>sysauto_script_f9f743fec389cb907b7c5c65e40131de</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-05-28 12:44:43</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

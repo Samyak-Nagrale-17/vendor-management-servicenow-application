@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice">
     <question_choice action="INSERT_OR_UPDATE">
         <inactive>false</inactive>
-        <misc>0</misc>
         <order>400</order>
         <published_ref/>
         <question display_value="Select the Contract Duration (in days)">ca87f16ac3414b907b7c5c65e4013150</question>
-        <rec_misc>0</rec_misc>
         <sys_class_name>question_choice</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-05-27 09:23:56</sys_created_on>

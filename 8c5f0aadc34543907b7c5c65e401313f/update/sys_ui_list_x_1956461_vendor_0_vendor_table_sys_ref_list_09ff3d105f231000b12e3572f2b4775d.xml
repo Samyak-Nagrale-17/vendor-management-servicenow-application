@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_list parent="" relationship="" sys_domain="09ff3d105f231000b12e3572f2b4775d" table="x_1956461_vendor_0_vendor_table" version="2" view="sys_ref_list">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_id</element>
+            <list_id display_value="x_1956461_vendor_0_vendor_table" element="NULL" name="x_1956461_vendor_0_vendor_table" parent="NULL" relationship="NULL" sys_domain="global" view="af3ba242183232108bb255f46a373a79">4039e0d6c30987907b7c5c65e40131e1</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-05-26 09:01:21</sys_created_on>
+            <sys_id>cc39e0d6c30987907b7c5c65e40131e1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-05-26 09:01:21</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>x_1956461_vendor_0_vendor_table</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>beth.anglin</sys_created_by>
+            <sys_created_on>2026-05-26 08:53:10</sys_created_on>
+            <sys_domain>09ff3d105f231000b12e3572f2b4775d</sys_domain>
+            <sys_domain_path>!!!/!!!/</sys_domain_path>
+            <sys_id>4c576c92c30987907b7c5c65e4013109</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_1956461_vendor_0_vendor_table</sys_name>
+            <sys_package display_value="Vendor Management" source="x_1956461_vendor_0">8c5f0aadc34543907b7c5c65e401313f</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Vendor Management">8c5f0aadc34543907b7c5c65e401313f</sys_scope>
+            <sys_update_name>sys_ui_list_x_1956461_vendor_0_vendor_table_sys_ref_list_09ff3d105f231000b12e3572f2b4775d</sys_update_name>
+            <sys_updated_by>beth.anglin</sys_updated_by>
+            <sys_updated_on>2026-05-26 08:53:10</sys_updated_on>
+            <sys_user/>
+            <view display_value="Reference List" name="sys_ref_list">af3ba242183232108bb255f46a373a79</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

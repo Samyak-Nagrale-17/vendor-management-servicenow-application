@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="INSERT_OR_UPDATE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description> Group that can access vendor records and approve/reject it</description>
+        <elevated_privilege>false</elevated_privilege>
+        <federated_id>Aup9XihPGIajsS6K1eiSi6QuKp5x5iTI4x7b13bn8HE=</federated_id>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_1956461_vendor_0.vendor_approver</name>
+        <scoped_admin>false</scoped_admin>
+        <suffix>vendor_approver</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-05-26 05:00:51</sys_created_on>
+        <sys_id>52d1f3cac3cd47907b7c5c65e4013110</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1956461_vendor_0.vendor_approver</sys_name>
+        <sys_package display_value="Vendor Management" source="x_1956461_vendor_0">8c5f0aadc34543907b7c5c65e401313f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Vendor Management">8c5f0aadc34543907b7c5c65e401313f</sys_scope>
+        <sys_update_name>sys_user_role_52d1f3cac3cd47907b7c5c65e4013110</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-05-26 05:00:51</sys_updated_on>
+    </sys_user_role>
+</record_update>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_index">
+    <sys_index action="INSERT_OR_UPDATE">
+        <access_method>btree</access_method>
+        <col_name_string>vendor_code</col_name_string>
+        <index_col_name>e1c45e69c38543907b7c5c65e401313d</index_col_name>
+        <logical_table_name>x_1956461_vendor_0_vendor_table</logical_table_name>
+        <sys_class_name>sys_index</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2026-05-24 09:11:32</sys_created_on>
+        <sys_id>ad589a61c3c543907b7c5c65e401311a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1956461_vendor_0_vendor_table</sys_name>
+        <sys_package display_value="Vendor Management" source="x_1956461_vendor_0">8c5f0aadc34543907b7c5c65e401313f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Vendor Management">8c5f0aadc34543907b7c5c65e401313f</sys_scope>
+        <sys_update_name>sys_index_x_1956461_vendor_0_vendor_table_vendor_code</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2026-05-24 09:11:32</sys_updated_on>
+        <table display_value="Vendor Table" name="x_1956461_vendor_0_vendor_table">1ff19225c38543907b7c5c65e401319f</table>
+        <unique_index>true</unique_index>
+    </sys_index>
+</record_update>

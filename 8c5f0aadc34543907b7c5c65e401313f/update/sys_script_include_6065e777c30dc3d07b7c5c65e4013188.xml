@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1956461_vendor_0.VendorRenewalAjax</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>VendorRenewalAjax</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var VendorRenewalAjax = Class.create();
+VendorRenewalAjax.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+    getVendorDetails: function() {
+        var vendorSysId = this.getParameter('sysparm_vendor_sys_id');
+        
+        if (!vendorSysId) {
+            return global.JSON.stringify({ error: 'No ID provided' });
+        }
+
+        var gr = new GlideRecord('x_1956461_vendor_0_vendor_table');
+
+        if (gr.get(vendorSysId)) {
+            var results = {
+                // Matches "Vendor Code" column label -> maps to "number" database column
+                vendor_code: gr.getValue('number') || '',
+                
+                // Matches "Vendor Name" column label -> maps to "vendor_name" database column
+                vendor_name: gr.getValue('vendor_name') || '',
+                
+                // Pure string field -> safe to pull directly via getValue()
+                vendor_contact: gr.getValue('vendor_contact') || '',
+                
+                // For choice fields, grab the internal database value (e.g. 'draft')
+                state: gr.getValue('state') || '',
+
+                // REFERENCE FIELD HANDLING: Extract both the raw Sys ID and Display Name
+                vendor_manager_id: gr.getValue('vendor_manager') || '',
+                vendor_manager_dv: gr.vendor_manager ? gr.vendor_manager.getDisplayValue() : ''
+            };
+
+            return global.JSON.stringify(results);
+        }
+
+        return global.JSON.stringify({ error: 'Vendor record not found' });
+    },
+
+    type: 'VendorRenewalAjax'
+});
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-05-31 14:37:05</sys_created_on>
+        <sys_id>6065e777c30dc3d07b7c5c65e4013188</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>VendorRenewalAjax</sys_name>
+        <sys_package display_value="Vendor Management" source="x_1956461_vendor_0">8c5f0aadc34543907b7c5c65e401313f</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Vendor Management">8c5f0aadc34543907b7c5c65e401313f</sys_scope>
+        <sys_update_name>sys_script_include_6065e777c30dc3d07b7c5c65e4013188</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-05-31 14:59:10</sys_updated_on>
+    </sys_script_include>
+</record_update>

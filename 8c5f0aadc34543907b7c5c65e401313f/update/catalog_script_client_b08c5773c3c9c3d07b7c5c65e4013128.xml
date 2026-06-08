@@ -13,91 +13,77 @@
         <description/>
         <field/>
         <global>true</global>
-        <isolate_script>true</isolate_script>
+        <isolate_script>false</isolate_script>
         <messages/>
         <name>get vendor request sys id from url param</name>
         <order/>
         <published_ref/>
         <script><![CDATA[function onLoad() {
-    //Type appropriate comment here, and begin script below
-    // alert(window.location.href);
-
-    var urlStr = top.location.href;
-    var urlParams = new URLSearchParams(urlStr);
+    // 1. Get the query string safely using search parameters
+    var urlParams = new URLSearchParams(top.location.search);
     var vendorSysId = urlParams.get('vendor_sys_id');
-    alert('vendor_sys_id: ' + vendorSysId);
 
+    // Optional console log to track execution
+    console.log('Detected vendor_sys_id from URL: ' + vendorSysId);
 
-    if (!vendorSysId)
+    // Stop execution early if no ID is found in the URL
+    if (!vendorSysId) {
         return;
+    }
 
+    // 2. Instantiate 'ga' FIRST before adding parameters
+    var ga = new GlideAjax('VendorRenewalAjax'); 
+    
+    // 3. Define parameters
+    ga.addParam('sysparm_name', 'getVendorDetails');
+    ga.addParam('sysparm_vendor_sys_id', vendorSysId);
 
-    gs.info('before glide ajax call...............');
-
-    var ga = new GlideAjax(
-        'VendorRenewalAjax'
-    );
-
-    ga.addParam(
-        'sysparm_name',
-        'getVendorDetails'
-    );
-
-    ga.addParam(
-        'sysparm_vendor_sys_id',
-        vendorSysId
-    );
-
-
-    gs.info('before get xml answer............');
-
+    // 4. Fire the server request asynchronously
     ga.getXMLAnswer(function(response) {
-
-        if (!response)
+        if (!response) {
+            console.error('No response received from VendorRenewalAjax');
             return;
+        }
 
-        var data = JSON.parse(response);
+        try {
+            var data = JSON.parse(response);
+			console.log('data: ', data);
+            // Handle errors thrown back explicitly from script include
+            if (data.error) {
+                console.error('Server Script Include Error: ' + data.error);
+                return;
+            }
 
-        g_form.setValue(
-            'vendor_code',
-            data.vendor_code
-        );
+            // 5. Populate standard text fields and choice lists
+            g_form.setValue('number', data.vendor_code);
+            g_form.setValue('vendor_name', data.vendor_name);
+            g_form.setValue('vendor_contact', data.vendor_contact); 
+            g_form.setValue('state', data.state); 
+            g_form.setValue('vendor_sys_id', vendorSysId);
 
-        g_form.setValue(
-            'vendor_name',
-            data.vendor_name
-        );
 
-        g_form.setValue(
-            'vendor_contact',
-            data.vendor_contact
-        );
 
-        g_form.setValue(
-            'vendor_manager',
-            data.vendor_manager
-        );
-
-        g_form.setValue(
-            'state',
-            data.state
-        );
-
-        g_form.setValue(
-    'vendor_sys_id',
-    vendorSysId
-);
-
+            // 6. Populate the Reference field cleanly using ID and Display Value
+            if (data.vendor_manager_id) {
+				console.log('vendor_manager', data.vendor_manager);
+                g_form.setValue('vendor_manager', data.vendor_manager_dv);
+            } else {
+                g_form.clearValue('vendor_manager');
+            }
+            
+        } catch (error) {
+            console.error('Parsing error inside GlideAjax response: ', error);
+        }
     });
-
-}]]></script>
+}
+]]></script>
         <sys_class_name>catalog_script_client</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-05-31 13:56:13</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>b08c5773c3c9c3d07b7c5c65e4013128</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>16</sys_mod_count>
         <sys_name>get vendor request sys id from url param</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vendor Management" source="x_1956461_vendor_0">8c5f0aadc34543907b7c5c65e401313f</sys_package>
@@ -105,7 +91,7 @@
         <sys_scope display_value="Vendor Management">8c5f0aadc34543907b7c5c65e401313f</sys_scope>
         <sys_update_name>catalog_script_client_b08c5773c3c9c3d07b7c5c65e4013128</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-05-31 14:44:59</sys_updated_on>
+        <sys_updated_on>2026-05-31 15:16:48</sys_updated_on>
         <table/>
         <type>onLoad</type>
         <ui_type>10</ui_type>
